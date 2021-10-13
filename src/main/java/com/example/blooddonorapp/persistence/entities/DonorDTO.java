@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -18,7 +18,7 @@ public class DonorDTO {
     private String surname;
     private BloodType bloodType;
     private String city;
-    private Set<Donation> donations;
+    private List<Donation> donations;
     private int numberOfDonations;
     private Date firstDonationDate;
     private Date lastDonationDate;

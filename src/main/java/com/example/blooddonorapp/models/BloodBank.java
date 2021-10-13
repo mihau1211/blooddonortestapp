@@ -18,6 +18,13 @@ public class BloodBank {
     private Long bloodBankId;
     @OneToMany(mappedBy = "bloodBank", fetch = FetchType.LAZY)
     private List<Donation> donations;
+    @ManyToMany
+    @JoinTable(
+            name = "bloodBankDonors",
+            joinColumns = @JoinColumn(name = "bloodBankId"),
+            inverseJoinColumns = @JoinColumn(name = "donorId")
+    )
+    private List<Donor> donors;
 
     public Long getBloodBankId() {
         return bloodBankId;
@@ -33,5 +40,13 @@ public class BloodBank {
 
     public void setDonations(List<Donation> donations) {
         this.donations = donations;
+    }
+
+    public List<Donor> getDonors() {
+        return donors;
+    }
+
+    public void setDonors(List<Donor> donors) {
+        this.donors = donors;
     }
 }

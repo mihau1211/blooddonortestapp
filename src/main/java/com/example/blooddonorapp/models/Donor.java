@@ -24,6 +24,8 @@ public class Donor extends User{
     private String city;
     @OneToMany(mappedBy = "donor", fetch = FetchType.LAZY)
     private List<Donation> donations;
+    @ManyToMany(mappedBy = "donors")
+    private List<BloodBank> bloodBanks;
     private int numberOfDonations;
     private Date firstDonationDate;
     private Date lastDonationDate;
