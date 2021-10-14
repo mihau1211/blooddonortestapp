@@ -16,7 +16,7 @@ public class DonorDTO {
     private long donorId;
     private String name;
     private String surname;
-    private BloodType bloodType;
+    private String bloodType;
     private String city;
     private List<Donation> donations;
     private int numberOfDonations;

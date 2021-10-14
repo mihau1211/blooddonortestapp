@@ -17,7 +17,7 @@ public class DonationDTO {
     private long donationId;
     private Donor donor;
     private Date donationDate;
-    private BloodType bloodType;
+    private String bloodType;
     private BloodBank bloodBank;
     private int quantity;
 }

@@ -1,5 +1,6 @@
 package com.example.blooddonorapp.persistence.services.mappers;
 
+import com.example.blooddonorapp.models.BloodType;
 import com.example.blooddonorapp.models.Donor;
 import com.example.blooddonorapp.persistence.entities.DonorDTO;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ public class DonorMapper {
                 .donorId(donorDTO.getDonorId())
                 .name(donorDTO.getName())
                 .surname(donorDTO.getSurname())
-                .bloodType(donorDTO.getBloodType())
+                .bloodType(BloodType.valueOf(donorDTO.getBloodType()))
                 .city(donorDTO.getCity())
                 .donations(donorDTO.getDonations())
                 .numberOfDonations(donorDTO.getNumberOfDonations())
@@ -28,7 +29,7 @@ public class DonorMapper {
                 .donorId(donor.getDonorId())
                 .name(donor.getName())
                 .surname(donor.getSurname())
-                .bloodType(donor.getBloodType())
+                .bloodType(donor.getBloodType().toString())
                 .city(donor.getCity())
                 .donations(donor.getDonations())
                 .numberOfDonations(donor.getNumberOfDonations())

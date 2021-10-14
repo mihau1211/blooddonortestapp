@@ -1,5 +1,6 @@
 package com.example.blooddonorapp.persistence.services.mappers;
 
+import com.example.blooddonorapp.models.BloodType;
 import com.example.blooddonorapp.models.Donation;
 import com.example.blooddonorapp.persistence.entities.DonationDTO;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ public class DonationMapper {
                 .donationId(donationDTO.getDonationId())
                 .donor(donationDTO.getDonor())
                 .donationDate(donationDTO.getDonationDate())
-                .bloodType(donationDTO.getBloodType())
+                .bloodType(BloodType.valueOf(donationDTO.getBloodType()))
                 .bloodBank(donationDTO.getBloodBank())
                 .quantity(donationDTO.getQuantity())
                 .build();
@@ -25,13 +26,13 @@ public class DonationMapper {
                 .donationId(donation.getDonationId())
                 .donor(donation.getDonor())
                 .donationDate(donation.getDonationDate())
-                .bloodType(donation.getBloodType())
+                .bloodType(donation.getBloodType().toString())
                 .bloodBank(donation.getBloodBank())
                 .quantity(donation.getQuantity())
                 .build();
     }
 
-    public List<DonationDTO> mapToDonationListDTO(final List<Donation> list) {
+    public List<DonationDTO> mapToDonationDTOList(final List<Donation> list) {
         return list.stream()
                 .map(this::mapToDonationDTO)
                 .collect(Collectors.toList());

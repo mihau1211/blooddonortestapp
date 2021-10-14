@@ -1,6 +1,7 @@
 package com.example.blooddonorapp.persistence.dao;
 
 import com.example.blooddonorapp.models.BloodBank;
+import com.example.blooddonorapp.models.BloodType;
 import com.example.blooddonorapp.models.Donation;
 import com.example.blooddonorapp.models.Donor;
 import org.springframework.data.jpa.repository.JpaRepository;

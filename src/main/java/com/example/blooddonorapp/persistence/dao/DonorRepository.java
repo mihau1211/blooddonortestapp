@@ -1,5 +1,6 @@
 package com.example.blooddonorapp.persistence.dao;
 
+import com.example.blooddonorapp.models.BloodType;
 import com.example.blooddonorapp.models.Donation;
 import com.example.blooddonorapp.models.Donor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,7 +27,7 @@ public interface DonorRepository extends JpaRepository<Donor, Long> {
 
     List<Donor> findByBloodType(String bloodType);
 
-    Optional<List<Donor>> findByCity(String city);
+    List<Donor> findByCity(String city);
 
     @Query(value = "SELECT donor_id FROM donor WHERE donation_id = :donationId", nativeQuery = true)
     Optional<Donor> getDonorByDonationId(Long donationId);
