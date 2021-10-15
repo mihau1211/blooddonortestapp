@@ -2,6 +2,7 @@ package com.example.blooddonorapp.persistence.entities;
 
 import com.example.blooddonorapp.models.BloodType;
 import com.example.blooddonorapp.models.Donation;
+import com.example.blooddonorapp.models.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +18,7 @@ public class DonorDTO {
     private String name;
     private String surname;
     private String bloodType;
+    private Gender gender;
     private String city;
     private List<Donation> donations;
     private int numberOfDonations;

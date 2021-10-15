@@ -20,6 +20,8 @@ public class Donor extends User{
     private String name;
     private String surname;
     @Enumerated(EnumType.STRING)
+    private Gender gender;
+    @Enumerated(EnumType.STRING)
     private BloodType bloodType;
     private String city;
     @OneToMany(mappedBy = "donor", fetch = FetchType.LAZY)
@@ -54,6 +56,14 @@ public class Donor extends User{
         this.surname = surname;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     public BloodType getBloodType() {
         return bloodType;
     }
@@ -76,6 +86,14 @@ public class Donor extends User{
 
     public void setDonations(List<Donation> donations) {
         this.donations = donations;
+    }
+
+    public List<BloodBank> getBloodBanks() {
+        return bloodBanks;
+    }
+
+    public void setBloodBanks(List<BloodBank> bloodBanks) {
+        this.bloodBanks = bloodBanks;
     }
 
     public int getNumberOfDonations() {

@@ -16,6 +16,7 @@ public class BloodBank {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bloodBankId;
+    private String city;
     @OneToMany(mappedBy = "bloodBank", fetch = FetchType.LAZY)
     private List<Donation> donations;
     @ManyToMany

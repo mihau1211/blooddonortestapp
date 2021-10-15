@@ -55,6 +55,18 @@ public class DonorService {
         }
     }
 
+    public List<DonorDTO> findByName(final String name){
+        return donorMapper.mapToDonorDTOList(donorRepository.findByName(name));
+    }
+
+    public List<DonorDTO> findBySurname(final String surname){
+        return donorMapper.mapToDonorDTOList(donorRepository.findBySurname(surname));
+    }
+
+    public List<DonorDTO> findByGender(final String gender){
+        return donorMapper.mapToDonorDTOList(donorRepository.findByGender(gender));
+    }
+
     public List<DonorDTO> findByBloodType(final String bloodType){
         return donorMapper.mapToDonorDTOList(donorRepository.findByBloodType(bloodType));
     }

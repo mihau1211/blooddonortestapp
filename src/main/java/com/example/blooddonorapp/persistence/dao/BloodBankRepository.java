@@ -1,8 +1,8 @@
 package com.example.blooddonorapp.persistence.dao;
 
 import com.example.blooddonorapp.models.BloodBank;
-import com.example.blooddonorapp.models.Donation;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,5 +20,8 @@ public interface BloodBankRepository extends JpaRepository<BloodBank, Long> {
     @Override
     void deleteById(Long id);
 
-//    List<BloodBank> findByDonation(Donation donation);
+    List<BloodBank> findByCity(String city);
+
+    @Query(value = "SELECT * FROM blood_bank WHERE donation_id = :donationId", nativeQuery = true)
+    Optional<BloodBank> getBloodBankByDonationId(Long donationId);
 }

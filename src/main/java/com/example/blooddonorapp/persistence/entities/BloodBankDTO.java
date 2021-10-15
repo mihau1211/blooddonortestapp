@@ -13,6 +13,7 @@ import java.util.List;
 @Builder
 public class BloodBankDTO {
     private long bloodBankId;
+    private String city;
     private List<Donation> donations;
     private List<Donor> donors;
 }

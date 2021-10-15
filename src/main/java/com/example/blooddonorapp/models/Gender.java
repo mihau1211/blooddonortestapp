@@ -1,5 +1,4 @@
 package com.example.blooddonorapp.models;
 
-public enum BloodType {
-    A, B, AB, ZERO
+public enum Gender {MALE, FEMALE
 }

@@ -25,10 +25,16 @@ public interface DonorRepository extends JpaRepository<Donor, Long> {
     @Override
     void deleteById(Long id);
 
+    List<Donor> findByName(String name);
+
+    List<Donor> findBySurname(String surname);
+
+    List<Donor> findByGender(String gender);
+
     List<Donor> findByBloodType(String bloodType);
 
     List<Donor> findByCity(String city);
 
-    @Query(value = "SELECT donor_id FROM donor WHERE donation_id = :donationId", nativeQuery = true)
+    @Query(value = "SELECT * FROM donor WHERE donation_id = :donationId", nativeQuery = true)
     Optional<Donor> getDonorByDonationId(Long donationId);
 }
