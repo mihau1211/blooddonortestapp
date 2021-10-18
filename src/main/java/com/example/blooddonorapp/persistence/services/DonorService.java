@@ -37,6 +37,12 @@ public class DonorService {
         return donorMapper.mapToDonorDTO(donor);
     }
 
+    public DonorDTO update(final DonorDTO donorDTO){
+        Donor donor = donorRepository.findById(donorDTO.getDonorId()).orElseThrow(() -> new DonorNotFoundException(donorDTO.getDonorId()));
+
+        return donorMapper.mapToDonorDTO(donorRepository.save(donor));
+    }
+
     public Optional<DonorDTO> findById(final Long id){
         Optional<Donor> optionalDonor = donorRepository.findById(id);
 

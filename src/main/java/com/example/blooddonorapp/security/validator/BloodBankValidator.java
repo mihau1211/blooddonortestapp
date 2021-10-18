@@ -18,9 +18,9 @@ public class BloodBankValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         BloodBankDTO bloodBankDTO = (BloodBankDTO) target;
-        if (bloodBankDTO.getBloodBankId() < 1){
-            String msg = String.format("Invalid input for field: %s", BLOOD_BANK_FIELD_BLOOD_BANK_ID);
-            throw new DonorNotValidFieldException(msg);
-        }
+//        if (bloodBankDTO.getBloodBankId() < 1){
+//            String msg = String.format("Invalid input for field: %s", BLOOD_BANK_FIELD_BLOOD_BANK_ID);
+//            throw new DonorNotValidFieldException(msg);
+//        }
     }
 }

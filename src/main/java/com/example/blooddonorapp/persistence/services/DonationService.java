@@ -57,6 +57,12 @@ public class DonationService {
         return donationMapper.mapToDonationDTO(donation);
     }
 
+    public DonationDTO update(final DonationDTO donationDTO){
+        Donation donation = donationRepository.findById(donationDTO.getDonationId()).orElseThrow(() -> new DonationNotFoundException(donationDTO.getDonationId()));
+
+        return donationMapper.mapToDonationDTO(donationRepository.save(donation));
+    }
+
     public Optional<DonationDTO> findById(final Long id){
         Optional<Donation> optionalDonation = donationRepository.findById(id);
 
