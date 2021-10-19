@@ -24,9 +24,16 @@ public class Donor extends User{
     @Enumerated(EnumType.STRING)
     private BloodType bloodType;
     private String city;
-    @OneToMany(mappedBy = "donor", fetch = FetchType.LAZY)
+    @OneToMany(
+            targetEntity = Donation.class,
+            mappedBy = "donationId",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     private List<Donation> donations;
-    @ManyToMany(mappedBy = "donors")
+    @ManyToMany(
+            mappedBy = "donors"
+    )
     private List<BloodBank> bloodBanks;
     private int numberOfDonations;
     private Date firstDonationDate;
@@ -118,5 +125,22 @@ public class Donor extends User{
 
     public void setLastDonationDate(Date lastDonationDate) {
         this.lastDonationDate = lastDonationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Donor{" +
+                "donorId=" + donorId +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", gender=" + gender +
+                ", bloodType=" + bloodType +
+                ", city='" + city + '\'' +
+                ", donations=" + donations +
+                ", bloodBanks=" + bloodBanks +
+                ", numberOfDonations=" + numberOfDonations +
+                ", firstDonationDate=" + firstDonationDate +
+                ", lastDonationDate=" + lastDonationDate +
+                '}';
     }
 }

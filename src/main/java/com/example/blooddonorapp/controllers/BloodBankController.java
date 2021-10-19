@@ -28,9 +28,9 @@ public class BloodBankController {
     @PostMapping
     @Validated(BloodBankValidator.class)
     public ResponseEntity<BloodBankDTO> save(@RequestBody BloodBankDTO bloodBankDTO, BindingResult result){
-        System.out.println(bloodBankDTO);
+//        System.out.println(bloodBankDTO);
         bloodBankValidator.validate(bloodBankDTO, result);
-        System.out.println(bloodBankDTO);
+//        System.out.println(bloodBankDTO);
         return new ResponseEntity<>(bloodBankService.save(bloodBankDTO), HttpStatus.CREATED);
     }
 

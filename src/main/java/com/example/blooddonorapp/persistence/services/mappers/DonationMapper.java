@@ -1,7 +1,9 @@
 package com.example.blooddonorapp.persistence.services.mappers;
 
+import com.example.blooddonorapp.models.BloodBank;
 import com.example.blooddonorapp.models.BloodType;
 import com.example.blooddonorapp.models.Donation;
+import com.example.blooddonorapp.models.Donor;
 import com.example.blooddonorapp.persistence.entities.DonationDTO;
 import org.springframework.stereotype.Component;
 
@@ -10,13 +12,13 @@ import java.util.stream.Collectors;
 
 @Component
 public class DonationMapper {
-    public Donation mapToDonation(final DonationDTO donationDTO){
+    public Donation mapToDonation(final DonationDTO donationDTO, final Donor donor, final BloodBank bloodBank){
         return Donation.builder()
                 .donationId(donationDTO.getDonationId())
-                .donor(donationDTO.getDonor())
+                .donor(donor)
                 .donationDate(donationDTO.getDonationDate())
                 .bloodType(BloodType.valueOf(donationDTO.getBloodType()))
-                .bloodBank(donationDTO.getBloodBank())
+                .bloodBank(bloodBank)
                 .quantity(donationDTO.getQuantity())
                 .build();
     }
@@ -24,10 +26,10 @@ public class DonationMapper {
     public DonationDTO mapToDonationDTO(final Donation donation){
         return DonationDTO.builder()
                 .donationId(donation.getDonationId())
-                .donor(donation.getDonor())
+                .donorId(donation.getDonor().getDonorId())
                 .donationDate(donation.getDonationDate())
                 .bloodType(donation.getBloodType().toString())
-                .bloodBank(donation.getBloodBank())
+                .bloodBankId(donation.getBloodBank().getBloodBankId())
                 .quantity(donation.getQuantity())
                 .build();
     }
@@ -38,9 +40,9 @@ public class DonationMapper {
                 .collect(Collectors.toList());
     }
 
-    public List<Donation> mapToDonationList(final List<DonationDTO> list) {
-        return list.stream()
-                .map(this::mapToDonation)
-                .collect(Collectors.toList());
-    }
+//    public List<Donation> mapToDonationList(final List<DonationDTO> list) {
+//        return list.stream()
+//                .map(this::mapToDonation)
+//                .collect(Collectors.toList());
+//    }
 }

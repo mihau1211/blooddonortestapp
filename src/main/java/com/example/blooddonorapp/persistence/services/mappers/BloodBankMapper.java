@@ -12,16 +12,14 @@ public class BloodBankMapper {
     public BloodBank mapToBloodBank(final BloodBankDTO bloodBankDTO){
         return BloodBank.builder()
                 .bloodBankId(bloodBankDTO.getBloodBankId())
-                .donations(bloodBankDTO.getDonations())
-                .donors(bloodBankDTO.getDonors())
+                .city(bloodBankDTO.getCity())
                 .build();
     }
 
     public BloodBankDTO mapToBloodBankDTO(final BloodBank bloodBank){
         return BloodBankDTO.builder()
                 .bloodBankId(bloodBank.getBloodBankId())
-                .donations(bloodBank.getDonations())
-                .donors(bloodBank.getDonors())
+                .city(bloodBank.getCity())
                 .build();
     }
 
@@ -30,11 +28,4 @@ public class BloodBankMapper {
                 .map(this::mapToBloodBankDTO)
                 .collect(Collectors.toList());
     }
-
-    public List<BloodBank> mapToBloodBankList(final List<BloodBankDTO> list){
-        return list.stream()
-                .map(this::mapToBloodBank)
-                .collect(Collectors.toList());
-    }
-
 }

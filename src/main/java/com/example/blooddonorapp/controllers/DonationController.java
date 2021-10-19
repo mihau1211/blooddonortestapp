@@ -67,9 +67,9 @@ public class DonationController {
         return new ResponseEntity<>(donationService.findByBloodType(bloodType), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/donor/{donor}")
-    public ResponseEntity<List<DonationDTO>> findByDonor(@PathVariable DonorDTO donorDTO){
-        return new ResponseEntity<>(donationService.findByDonor(donorDTO), HttpStatus.OK);
+    @GetMapping(value = "/donor/{donorId}")
+    public ResponseEntity<List<DonationDTO>> findByDonorId(@PathVariable Long donorId){
+        return new ResponseEntity<>(donationService.findByDonorId(donorId), HttpStatus.OK);
     }
 
     @GetMapping(value = "/bloodBank/{bloodBank}")

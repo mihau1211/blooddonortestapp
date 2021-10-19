@@ -35,7 +35,7 @@ public class BloodBankService {
 
     public BloodBankDTO save(final BloodBankDTO bloodBankDTO){
         BloodBank bloodBank = bloodBankRepository.save(bloodBankMapper.mapToBloodBank(bloodBankDTO));
-
+        System.out.println(bloodBank);
         return bloodBankMapper.mapToBloodBankDTO(bloodBank);
     }
 

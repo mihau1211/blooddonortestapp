@@ -52,7 +52,9 @@ public class DonationService {
     }
 
     public DonationDTO save(final DonationDTO donationDTO){
-        Donation donation = donationRepository.save(donationMapper.mapToDonation(donationDTO));
+        Optional<Donor> donor = donorRepository.findById(donationDTO.getDonorId());
+        Optional<BloodBank> bloodBank = bloodBankRepository.findById(donationDTO.getBloodBankId());
+        Donation donation = donationRepository.save(donationMapper.mapToDonation(donationDTO, donor.get(), bloodBank.get()));
 
         return donationMapper.mapToDonationDTO(donation);
     }
@@ -85,12 +87,12 @@ public class DonationService {
         return donationMapper.mapToDonationDTOList(donationRepository.findByBloodType(bloodType));
     }
 
-    public List<DonationDTO> findByDonor(final DonorDTO donorDTO){
-        Optional<Donor> optionalDonor = donorRepository.findById(donorDTO.getDonorId());
+    public List<DonationDTO> findByDonorId(final Long donorId){
+        Optional<Donor> optionalDonor = donorRepository.findById(donorId);
         if(optionalDonor.isPresent()){
-            return donationMapper.mapToDonationDTOList(donationRepository.findByDonor(donorMapper.mapToDonor(donorDTO)));
+            return donationMapper.mapToDonationDTOList(donationRepository.findByDonor(optionalDonor.get()));
         }else{
-            throw donorNotFoundException(donorDTO.getDonorId());
+            throw donorNotFoundException(donorId);
         }
     }
 

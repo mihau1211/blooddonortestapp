@@ -17,14 +17,17 @@ public class BloodBank {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bloodBankId;
     private String city;
-    @OneToMany(mappedBy = "bloodBank", fetch = FetchType.LAZY)
-    private List<Donation> donations;
-    @ManyToMany
-    @JoinTable(
-            name = "bloodBankDonors",
-            joinColumns = @JoinColumn(name = "bloodBankId"),
-            inverseJoinColumns = @JoinColumn(name = "donorId")
+    @OneToMany(
+            targetEntity = Donation.class,
+            mappedBy = "donationId",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
     )
+    private List<Donation> donations;
+    @ManyToMany( cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     private List<Donor> donors;
 
     public Long getBloodBankId() {
@@ -35,19 +38,21 @@ public class BloodBank {
         this.bloodBankId = bloodBankId;
     }
 
-    public List<Donation> getDonations() {
-        return donations;
+    public String getCity() {
+        return city;
     }
 
-    public void setDonations(List<Donation> donations) {
-        this.donations = donations;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public List<Donor> getDonors() {
-        return donors;
-    }
-
-    public void setDonors(List<Donor> donors) {
-        this.donors = donors;
+    @Override
+    public String toString() {
+        return "BloodBank{" +
+                "bloodBankId=" + bloodBankId +
+                ", city='" + city + '\'' +
+                ", donations=" + donations +
+                ", donors=" + donors +
+                '}';
     }
 }

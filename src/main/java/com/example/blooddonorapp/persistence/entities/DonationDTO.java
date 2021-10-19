@@ -15,9 +15,9 @@ import java.util.Date;
 @Builder
 public class DonationDTO {
     private long donationId;
-    private Donor donor;
     private Date donationDate;
     private String bloodType;
-    private BloodBank bloodBank;
     private int quantity;
+    private Long bloodBankId;
+    private Long donorId;
 }

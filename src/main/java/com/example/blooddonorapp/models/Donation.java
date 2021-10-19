@@ -16,14 +16,14 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long donationId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "donorId", nullable = false, insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "donorId")
     private Donor donor;
     private Date donationDate;
     @Enumerated(EnumType.STRING)
     private BloodType bloodType;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bloodBankId", nullable = false, insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "bloodBankId")
     private BloodBank bloodBank;
     private int quantity;
 
@@ -73,5 +73,17 @@ public class Donation {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Donation{" +
+                "donationId=" + donationId +
+                ", donor=" + donor +
+                ", donationDate=" + donationDate +
+                ", bloodType=" + bloodType +
+                ", bloodBank=" + bloodBank +
+                ", quantity=" + quantity +
+                '}';
     }
 }
